@@ -1,0 +1,16 @@
+name: clang-tidy-junit
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+      - run: pip install -e .[dev]
+      - run: black --check **/*.py
+      - run: coverage run -m unittest
+      - run: coverage report
+      - run: mypy
+      - run: pylint **/*.py
