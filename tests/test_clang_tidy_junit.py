@@ -16,7 +16,6 @@ class TestClangTidyJunit(unittest.TestCase):
                 with self.subTest(f):
                     f1 = f"tests/samples/{f}"
                     f2 = f"{d}/{f}"
-                    print(f1, f2)
                     ctj.process(f"{f1}.log", f"{f2}.xml")
                     assert filecmp.cmp(f"{f1}.xml", f"{f2}.xml", shallow=False)
 
