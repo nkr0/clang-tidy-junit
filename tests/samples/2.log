@@ -1,0 +1,18 @@
+12 warnings generated.
+1 warning generated.
+main.cpp:5:3: error: some message [type-a]
+    5 |   {
+      |   ^
+123 warnings generated.
+a.cpp:5:3: error: some message [type-a]
+    5 |   {
+      |   ^
+main.cpp:10:3: error: some message [type-c++2,type-C.x]
+   10 |   {
+      |   ^
+main.cpp:12:3: note: more info
+   12 |   }
+      |    ^
+z.cpp:4:3: error: some message [type-z]
+    4 |   {
+      |   ^

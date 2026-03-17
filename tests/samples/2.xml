@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites name="Clang-Tidy"><testsuite name="Clang-Tidy" tests="3" errors="4" failures="0" skipped="0" time="0"><testcase name="a.cpp"><error message="a.cpp:5:3: error: some message" type="[type-a]">a.cpp:5:3: error: some message [type-a]
+    5 |   {
+      |   ^
+</error></testcase><testcase name="main.cpp"><error message="main.cpp:5:3: error: some message" type="[type-a]">main.cpp:5:3: error: some message [type-a]
+    5 |   {
+      |   ^
+</error><error message="main.cpp:10:3: error: some message" type="[type-c++2,type-C.x]">main.cpp:10:3: error: some message [type-c++2,type-C.x]
+   10 |   {
+      |   ^
+main.cpp:12:3: note: more info
+   12 |   }
+      |    ^
+</error></testcase><testcase name="z.cpp"><error message="z.cpp:4:3: error: some message" type="[type-z]">z.cpp:4:3: error: some message [type-z]
+    4 |   {
+      |   ^
+</error></testcase></testsuite></testsuites>
