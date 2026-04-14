@@ -3,6 +3,7 @@
 import itertools
 import re
 import sys
+
 from junitparser import Error, JUnitXml, TestCase, TestSuite
 from junitparser.junitparser import FinalResult
 
@@ -49,7 +50,7 @@ def generate_test_case(name: str, errors: list[tuple[str, Error]]) -> TestCase:
 
 def generate_test_suite(errors: list[tuple[str, Error]]) -> TestSuite:
     """generate a test suite"""
-    test_suite = TestSuite("Clang-Tidy")  # type: ignore
+    test_suite = TestSuite("Clang-Tidy")
     if errors:
         errors = sorted(errors, key=lambda e: e[0])
         for file, it in itertools.groupby(errors, key=lambda e: e[0]):
@@ -64,7 +65,7 @@ def generate_test_suite(errors: list[tuple[str, Error]]) -> TestSuite:
 def process(logfile: str, junitfile: str) -> int:
     """convert clang-tidy log to junit"""
     errors = parse_log(logfile)
-    tree = JUnitXml("Clang-Tidy")  # type: ignore
+    tree = JUnitXml("Clang-Tidy")
     tree.add_testsuite(generate_test_suite(errors))
     tree.write(junitfile)
     return 0

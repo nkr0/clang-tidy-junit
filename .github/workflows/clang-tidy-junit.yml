@@ -8,16 +8,17 @@ jobs:
       with:
         python-version: '3.x'
     - run: pipx run build
+    - run: pip install -e .[dev]
+    - run: black --check .
+    - run: isort -c .
+    - run: mypy
+    - run: pylint src tests
+    - run: coverage run -m unittest
+    - run: coverage report
     - uses: actions/upload-artifact@v7
       with:
         name: dist
         path: dist
-    - run: pip install -e .[dev]
-    - run: black --check **/*.py
-    - run: pylint **/*.py
-    - run: mypy
-    - run: coverage run -m unittest
-    - run: coverage report
   deploy:
     if: github.ref_type == 'tag'
     needs: test
